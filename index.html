@@ -4,14 +4,16 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Потужний веб-сайт</title>
+  <meta name="description" content="Потужний сучасний веб-сайт з багатьма можливостями, блогом, реєстрацією та контактами.">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
   <header>
     <h1>Потужний веб-сайт</h1>
     <nav>
-      <ul>
-        <li><a href="index.html">Головна</a></li>
+      <div class="burger" id="burger">&#9776;</div>
+      <ul id="menu">
+        <li><a href="index.html" class="active">Головна</a></li>
         <li><a href="blog.html">Блог</a></li>
         <li><a href="register.html">Реєстрація</a></li>
         <li><a href="contact.html">Контакти</a></li>
@@ -22,12 +24,35 @@
   <main>
     <section>
       <h2>Ласкаво просимо!</h2>
-      <p>Це демонстрація потужного веб-сайту з багатьма можливостями на HTML.</p>
+      <p>Це демонстрація сучасного потужного веб-сайту з інтерактивними можливостями.</p>
+      <button id="feedbackBtn">Зворотній зв’язок</button>
     </section>
   </main>
 
+  <!-- Модальне вікно -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <span class="close" id="closeModal">&times;</span>
+      <h3>Зворотній зв’язок</h3>
+      <form id="feedbackForm">
+        <label for="fb-name">Ваше ім'я:</label>
+        <input type="text" id="fb-name" required>
+        <label for="fb-message">Повідомлення:</label>
+        <textarea id="fb-message" required></textarea>
+        <button type="submit">Відправити</button>
+      </form>
+      <div id="fb-success" class="hidden">Дякуємо за звернення!</div>
+    </div>
+  </div>
+
   <footer>
+    <div class="footer-links">
+      <a href="#">Facebook</a> | 
+      <a href="#">Instagram</a> | 
+      <a href="#">Telegram</a>
+    </div>
     <p>&copy; 2025 Потужний веб-сайт</p>
   </footer>
+  <script src="script.js"></script>
 </body>
 </html>
