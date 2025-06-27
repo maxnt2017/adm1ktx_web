@@ -1,19 +1,38 @@
+:root {
+  --main-bg: #f7f7f7;
+  --main-text: #222;
+  --header-bg: linear-gradient(90deg, #232e3c 70%, #33445a 100%);
+  --header-color: #fff;
+  --nav-hover: #485b7b;
+  --button-bg: #232e3c;
+  --button-hover: #33445a;
+  --modal-bg: #fff;
+  --modal-shadow: #232e3c55;
+  --footer-bg: #232e3c;
+  --footer-color: #fff;
+}
+
 body {
   font-family: 'Segoe UI', Arial, sans-serif;
   margin: 0;
-  background: #f7f7f7;
-  color: #222;
+  background: var(--main-bg);
+  color: var(--main-text);
   min-height: 100vh;
+  transition: background 0.3s, color 0.3s;
 }
 header {
-  background: linear-gradient(90deg, #232e3c 70%, #33445a 100%);
-  color: #fff;
+  background: var(--header-bg);
+  color: var(--header-color);
   padding: 1em 0;
   text-align: center;
   box-shadow: 0 2px 6px #0002;
 }
 nav {
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1em;
 }
 nav ul {
   list-style: none;
@@ -25,7 +44,7 @@ nav ul {
   transition: max-height 0.3s;
 }
 nav ul li a {
-  color: #fff;
+  color: var(--header-color);
   text-decoration: none;
   font-weight: bold;
   padding: 0.5em 1em;
@@ -34,7 +53,19 @@ nav ul li a {
 }
 nav ul li a:hover,
 nav ul li a.active {
-  background: #485b7b;
+  background: var(--nav-hover);
+}
+#themeToggle {
+  background: none;
+  border: none;
+  color: var(--header-color);
+  font-size: 1.3em;
+  cursor: pointer;
+  margin-left: 1em;
+  transition: color 0.2s;
+}
+#themeToggle:hover {
+  color: #ffd700;
 }
 .burger {
   display: none;
@@ -51,16 +82,17 @@ main {
   padding: 2em;
   box-shadow: 0 0 10px #ddd;
   border-radius: 8px;
+  transition: background 0.3s, color 0.3s;
 }
 button, input, textarea {
   font-size: 1em;
-  padding: 0.5em;
+  padding: 0.7em;
   border-radius: 4px;
   border: 1px solid #b0b0b0;
   outline: none;
 }
 button {
-  background: #232e3c;
+  background: var(--button-bg);
   color: #fff;
   border: none;
   cursor: pointer;
@@ -68,14 +100,14 @@ button {
   box-shadow: 0 2px 4px #0001;
 }
 button:hover {
-  background: #33445a;
+  background: var(--button-hover);
   box-shadow: 0 4px 10px #0002;
 }
 .footer-links {
   margin-bottom: 0.5em;
 }
 .footer-links a {
-  color: #fff;
+  color: var(--footer-color);
   margin: 0 0.5em;
   text-decoration: none;
   opacity: 0.85;
@@ -86,8 +118,8 @@ button:hover {
   text-decoration: underline;
 }
 footer {
-  background: #232e3c;
-  color: #fff;
+  background: var(--footer-bg);
+  color: var(--footer-color);
   text-align: center;
   padding: 2em 0 1em 0;
   margin-top: 2em;
@@ -103,16 +135,26 @@ footer {
   background: #232e3c77;
   align-items: center;
   justify-content: center;
+  animation: fadeIn 0.3s;
+}
+@keyframes fadeIn {
+  from { opacity: 0 }
+  to { opacity: 1 }
 }
 .modal-content {
-  background: #fff;
+  background: var(--modal-bg);
   padding: 2em;
   border-radius: 8px;
   width: 90%;
   max-width: 400px;
   position: relative;
-  box-shadow: 0 6px 32px #232e3c55;
+  box-shadow: 0 6px 32px var(--modal-shadow);
   text-align: left;
+  animation: modalAppear 0.3s;
+}
+@keyframes modalAppear {
+  from { transform: translateY(-60px); opacity: 0 }
+  to { transform: translateY(0); opacity: 1 }
 }
 .close {
   position: absolute;
@@ -144,4 +186,23 @@ footer {
   .burger {
     display: block;
   }
+  button, input, textarea {
+    font-size: 1.1em;
+    padding: 1em;
+  }
+}
+
+/* Темна тема */
+body.dark {
+  --main-bg: #181c23;
+  --main-text: #e5e7eb;
+  --header-bg: linear-gradient(90deg, #181c23 70%, #232e3c 100%);
+  --header-color: #ffd700;
+  --nav-hover: #2a2f3c;
+  --button-bg: #33445a;
+  --button-hover: #232e3c;
+  --modal-bg: #1a1e25;
+  --modal-shadow: #000b;
+  --footer-bg: #181c23;
+  --footer-color: #ffd700;
 }
